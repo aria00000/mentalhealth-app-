@@ -1,4 +1,5 @@
 # ライブラリのインポート
+pip install scikit-learn
 from sklearn.ensemble import RandomForestClassifier
 import streamlit as st
 import pandas as pd
