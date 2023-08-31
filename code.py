@@ -1,7 +1,7 @@
 # ライブラリのインポート
-import subprocess
-subprocess.run(["pip", "install", "scikit-learn"])
-
+git add requirements.txt
+git commit -m "Add requirements.txt"
+git push
 from sklearn.ensemble import RandomForestClassifier
 import streamlit as st
 import pandas as pd
