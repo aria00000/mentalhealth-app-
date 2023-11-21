@@ -31,25 +31,7 @@ phq_choices = ["全くない", "いくつかの日", "週の半分以上", "ほ�
 # Streamlit UI
 st.title("メンタルヘルス分析アプリ")
 
-# 画像入力
-img_source = st.radio("画像のソースを選択してください。", ("画像をアップロード", "カメラで撮影"))
-if img_source == "カメラで撮影":
-    img_file_buffer = st.camera_input("カメラで撮影")
-elif img_source == "画像をアップロード":
-    img_file_buffer = st.file_uploader("ファイルを選択")
-else:
-    img_file_buffer = None
 
-# 画像の感情分析
-if img_file_buffer:
-    img_file_buffer_2 = Image.open(img_file_buffer)
-    img_file = np.array(img_file_buffer_2)
-    cv2.imwrite('temporary.jpg', img_file)
-    image_prediction = detector.detect_image("temporary.jpg")
-    image_prediction = image_prediction[["anger", "disgust", "fear", "happiness", "sadness", "surprise", "neutral"]]
-    emotion = image_prediction.idxmax(axis=1)[0]
-    st.markdown("#### あなたの表情は")
-    st.markdown("### {}です".format(emotion))
 
 # PHQ-9アンケート
 st.subheader("PHQ-9アンケート")
@@ -59,20 +41,4 @@ for q in phq_questions:
     phq_answers.append(phq_choices.index(answer))
 phq_9_score = sum(phq_answers)
 
-# データ組み合わせ
-if img_file_buffer:
-    data = image_prediction.iloc[0].to_dict()
-else:
-    data = {}
-data['phq_9_score'] = phq_9_score
-df = pd.DataFrame([data])
 
-# ランダムフォレスト（ここではダミーコード）
-# clf = RandomForestClassifier()
-# clf.fit(X_train, y_train)
-
-# 予測（ダミーコード）
-# prediction = clf.predict(df)
-
-# 結果表示（ダミーコード）
-# st.subheader(f"予測結果: {prediction}")
