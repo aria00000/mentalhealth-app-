@@ -28,7 +28,6 @@ phq_questions = [
     ]
 phq_choices = ["全くない", "いくつかの日", "週の半分以上", "ほとんど毎日"]
 
-# Streamlit UI
 st.title("メンタルヘルス分析アプリ")
 
 
