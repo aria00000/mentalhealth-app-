@@ -16,7 +16,7 @@ detector = Detector(face_model=face_model, landmark_model=landmark_model, au_mod
 
 # PHQ-9の質問
 phq_questions = [
-     "過去2週間、ほとんど毎日気分が沈んでいたか？",
+     "過去2週間、ほとんど毎日気分が沈んでいたか？???",
         "過去2週間、興味や喜びを感じることが減ったか？",
         "過去2週間、睡眠障害（寝すぎまたは不眠）があったか？",
         "過去2週間、疲労やエネルギーの低下を感じたか？",
